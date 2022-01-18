@@ -83,7 +83,7 @@ public class Raqueta implements Runnable {
             System.out.println(partido.toString());
 
             try {
-                Thread.sleep(200);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
