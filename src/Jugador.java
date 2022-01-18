@@ -2,9 +2,26 @@ public class Jugador {
 
     private String nombre;
     private Raqueta raqueta;
+    private static Jugador jugador1;
+    private static Jugador jugador2;
 
-    public Jugador(String nombre) {
-        this.nombre = nombre;
+    private Jugador() {
+    }
+
+    public static Jugador getJugador1() {
+        if (jugador1 == null) {
+            jugador1 = new Jugador();
+        }
+
+        return jugador1;
+    }
+
+    public static Jugador getJugador2() {
+        if (jugador2 == null) {
+            jugador2 = new Jugador();
+        }
+
+        return jugador2;
     }
 
     public String getNombre() {
@@ -23,8 +40,4 @@ public class Jugador {
         this.raqueta = raqueta;
     }
 
-    @Override
-    public String toString() {
-        return "Jugador " +nombre;
-    }
 }

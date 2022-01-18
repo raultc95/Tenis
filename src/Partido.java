@@ -1,49 +1,25 @@
 
-public class Partido implements Runnable {
+public class Partido {
     private int marcadorJ1;
     private int marcadorJ2;
     private int setJ1;
     private int setJ2;
     private int sets;
+    private static Partido partido;
 
-    public Partido(int sets) {
+    private Partido() {
         this.marcadorJ1 = 0;
         this.marcadorJ2 = 0;
         this.setJ1 = 0;
         this.setJ2 = 0;
-        this.sets = sets;
     }
 
-    @Override
-    public void run() {
-        Thread t1 = new Thread(new Raqueta());
-        Thread t2 = new Thread(new Raqueta());
-        do{
-            t1.start();
-
-            try {
-                t1.join();
-            } catch (InterruptedException ie) {
-                ie.printStackTrace();
-            }
-            t2.start();
-
-            try {
-                t2.join();
-            } catch (InterruptedException ie) {
-                ie.printStackTrace();
-            }
-
-        } while (setJ1<sets || setJ2<sets);
-
-        if(setJ1>=sets){
-            System.out.println("Jugador 1 ha ganado");
-        } else {
-            System.out.println("Jugador 2 ha ganado");
+    public static Partido getPartido() {
+        if (partido == null) {
+            partido = new Partido();
         }
 
-
-
+        return partido;
     }
 
     public int getMarcadorJ1() {
@@ -86,7 +62,15 @@ public class Partido implements Runnable {
         this.sets = sets;
     }
 
-    public void empezar() {
-
+    @Override
+    public String toString() {
+        return "\t\tPartido{" +
+                "marcadorJ1=" + marcadorJ1 +
+                ", marcadorJ2=" + marcadorJ2 +
+                ", setJ1=" + setJ1 +
+                ", setJ2=" + setJ2 +
+                ", sets=" + sets +
+                '}';
     }
+
 }
